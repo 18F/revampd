@@ -1,0 +1,12 @@
+# intended for local development, mirroring cloud.gov buildpack
+
+version: '2'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: etc/docker/api.Dockerfile
+    volumes:
+      - .:/go/src/github.com/18F/hello-ampd
+      - /go/src/github.com/18F/hello-ampd/src/vendor
