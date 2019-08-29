@@ -19,3 +19,6 @@ COPY src/Gopkg.toml src/Gopkg.lock ./
 
 # install dependencies under WORKDIR, in `vendor`
 RUN dep ensure -vendor-only
+
+# default command that is executed if none specified
+CMD ["sh","-c","make build && exec hello-ampd"]
