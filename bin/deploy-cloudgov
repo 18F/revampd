@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e
+
+CF_LOGIN="https://api.fr.cloud.gov"
+CF_ORG="epa-prototyping"
+CF_SPACE="dev-ampd"
+APP_NAME="hello-ampd"
+MANIFEST="etc/manifests/api.yml"
+
+# This directory is used to persist the CF credentials
+mkdir -p $HOME/.cf
+
+# Container with Cloud Foundry client and blue-green-deploy, autopilot plug-ins
+docker pull governmentpaas/cf-cli:latest
+
+# For some reason, aliases aren't working here
+# so we're using this function instead
+cf_run() {
+  docker run \
+    --rm \
+    -v $HOME/.cf:/root/.cf \
+    -v $PWD:/app \
+    -w /app \
+    governmentpaas/cf-cli \
+    cf "$@"
+}
+
+cf_run login -a $CF_LOGIN -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s $CF_SPACE
+cf_run push $APP_NAME -f $MANIFEST

@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  cloudgov:
+    machine: true
+    steps:
+      - checkout
+      - deploy:
+          command: ./bin/deploy-cloudgov
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - cloudgov:
+          filters:
+            branches:
+              only:
+                - develop
