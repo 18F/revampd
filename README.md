@@ -1,4 +1,7 @@
 # hello-ampd
+
+[![Build Status][badge_ci]][5]
+
 Basic tutorial for the EPA Clean Air Markets Division to go through the process of creating a small web app, in the problem space of AMPD, with automated tests and deployment to cloud.gov.
 
 Currently, `hello-ampd` is a very simple API backend, providing a "Hello World" style response to HTTP GET calls.
@@ -65,8 +68,9 @@ docker-compose build
 Be sure to commit the `dep`-generated updates to `src/Gopkg.toml` and `src/Gopkg.lock`.
 
 
-
+[badge_ci]: https://circleci.com/gh/18F/hello-ampd.svg?style=shield
 [1]: https://git-scm.com/
 [2]: https://docker.com
 [3]: https://docs.docker.com/compose
 [4]: https://golang.github.io/dep/
+[5]: https://circleci.com/gh/18F/hello-ampd
