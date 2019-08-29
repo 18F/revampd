@@ -12,3 +12,10 @@ WORKDIR /go/src/github.com/18F/hello-ampd/src
 
 # add project binaries to list of executable directories
 ENV PATH="${PATH}:${GOPATH}/src/github.com/18F/hello-ampd/bin
+
+# COPY source paths are relative to the build context on the host OS
+# and requires a trailing slash on a destination directory under WORKDIR
+COPY src/Gopkg.toml src/Gopkg.lock ./
+
+# install dependencies under WORKDIR, in `vendor`
+RUN dep ensure -vendor-only
