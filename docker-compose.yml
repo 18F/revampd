@@ -1,12 +1,28 @@
-# intended for local development, mirroring cloud.gov buildpack
+# This docker service serves 2 purposes:
+# - a self-contained Go build environment
+# - a local execution environment
 
 version: '2'
 
 services:
   api:
     build:
+      # path to the Dockerfile -- contains the commands/description of
+      # how to assemble the base image used for this service
       context: .
       dockerfile: etc/docker/api.Dockerfile
+    env_file:
+      # used to set key/value pairs that set the environment variables
+      # for the execution context of the command run in the Dockerfile
+      - .env
     volumes:
+      # mount the current directory into the container so we can edit the
+      # source with tools in the host OS, but build them in the container
       - .:/go/src/github.com/18F/hello-ampd
+      # create `vendor` as a separate volume so the host OS mount above
+      # doesn't mask/overlay the true vendor tree which is populated in
+      # the Dockerfile
       - /go/src/github.com/18F/hello-ampd/src/vendor
+    ports:
+      # map port 8080 on the host OS to the port defined in .env
+      - "8080:${PORT}"
