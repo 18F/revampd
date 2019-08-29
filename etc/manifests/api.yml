@@ -3,6 +3,7 @@ applications:
   memory: 64M
   path: ../../src
   command: ./bin/hello-ampd
+  stack: cflinuxfs3
   buildpacks:
   - go_buildpack
   env:
