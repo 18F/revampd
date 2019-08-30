@@ -69,7 +69,7 @@ Be sure to commit the `dep`-generated updates to `src/Gopkg.toml` and `src/Gopkg
 
 
 [badge_ci]: https://circleci.com/gh/18F/hello-ampd.svg?style=shield
-[badge_snyk]: https://user-images.githubusercontent.com/37100189/64040683-683a1e80-cb12-11e9-89f6-95f3f217e8f3.png
+[badge_snyk]: https://user-images.githubusercontent.com/37100189/64040853-cb2bb580-cb12-11e9-9312-bbc63f2c3d2c.png
 [1]: https://git-scm.com/
 [2]: https://docker.com
 [3]: https://docs.docker.com/compose
