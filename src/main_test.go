@@ -35,3 +35,11 @@ func TestHtml(t *testing.T) {
 		t.Fatal("HTML was not valid")
 	}
 }
+
+func TestGreeting(t *testing.T) {
+	path := "/"
+	text := helloHtml(path)
+	if strings.Contains(text, "Hello") {
+		t.Fatal("Wrong greeting in text")
+	}
+}
