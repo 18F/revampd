@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"html"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -14,7 +15,7 @@ func init() {
 }
 
 func helloHtml(path string) string {
-	return fmt.Sprintf("<h1>Salutations AMPD from Go,</h1>\n<p>You've requested: %s</p>\n", path)
+	return fmt.Sprintf("<h1>Salutations AMPD from Go,</h1>\n<p>You've requested: %s</p>\n", html.EscapeString(path))
 }
 
 func main() {

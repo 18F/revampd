@@ -43,3 +43,11 @@ func TestGreeting(t *testing.T) {
 		t.Fatal("Wrong greeting in text")
 	}
 }
+
+func TestJavaScriptInjection(t *testing.T) {
+	path := "/<script>alert('hello')</script>"
+	text := helloHtml(path)
+	if strings.Contains(text, "<script>") {
+		t.Fatal("JavaScript injection attack")
+	}
+}
