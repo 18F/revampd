@@ -7,8 +7,8 @@ jobs:
       - run:
           name: Run Go tests
           command: docker-compose run --rm api make
-      - codecov:
-          name: Upload code coverage
+      - run:
+          name: Upload test coverage to codecov.io
           file: ./bin/upload-codecov
 
   cloudgov:
