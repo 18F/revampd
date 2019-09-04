@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.5
 jobs:
   test:
     machine: true
@@ -7,6 +9,8 @@ jobs:
       - run:
           name: Run Go tests
           command: docker-compose run --rm api make
+      - codecov/upload:
+          file: ./src/coverage.txt
 
   cloudgov:
     machine: true
@@ -16,7 +20,7 @@ jobs:
           command: ./bin/deploy-cloudgov
 
 workflows:
-  version: 2
+  version: 2.1
   build-deploy:
     jobs:
       - test
