@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"html"
 	"net/http"
 	"os"
-	"html"
 
 	log "github.com/sirupsen/logrus"
 )
