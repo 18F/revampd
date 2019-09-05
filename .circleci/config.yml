@@ -9,7 +9,7 @@ jobs:
           command: docker-compose run --rm api make
       - run:
           name: Upload test coverage to codecov.io
-          file: ./bin/upload-codecov
+          command: ./bin/upload-codecov
 
   cloudgov:
     machine: true
