@@ -1,3 +1,3 @@
 #!/bin/bash
-./cc-test-reporter format-coverage --input-type gocov ./src/coverage.txt
+./cc-test-reporter format-coverage --input-type gocov ./src/coverage.txt -p ./src
 ./cc-test-reporter upload-coverage
