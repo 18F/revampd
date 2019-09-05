@@ -16,3 +16,4 @@
 
 # Build artifacts
 /bin/hello-ampd
+/src/coverage.txt

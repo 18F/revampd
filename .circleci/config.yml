@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   test:
     machine: true
@@ -7,6 +7,9 @@ jobs:
       - run:
           name: Run Go tests
           command: docker-compose run --rm api make
+      - run:
+          name: Upload test coverage to codecov.io
+          command: ./bin/upload-codecov
 
   cloudgov:
     machine: true
@@ -16,7 +19,7 @@ jobs:
           command: ./bin/deploy-cloudgov
 
 workflows:
-  version: 2
+  version: 2.1
   build-deploy:
     jobs:
       - test
