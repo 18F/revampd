@@ -5,10 +5,16 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Setup Code Climate reporter
+          command: ./bin/setup-codeclimate
+      - run:
           name: Run Go tests
           command: docker-compose run --rm api make
       - run:
-          name: Upload test coverage to codecov.io
+          name: Upload test coverage to Code Climate
+          command: ./bin/upload-codeclimate
+      - run:
+          name: Upload test coverage to Codecov
           command: ./bin/upload-codecov
 
   cloudgov:
