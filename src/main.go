@@ -5,6 +5,7 @@ import (
 	"html"
 	"net/http"
 	"os"
+	"regexp"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -15,6 +16,8 @@ func init() {
 }
 
 func helloHtml(path string) string {
+	re := regexp.MustCompile(`(?i)foo`)
+	path = re.ReplaceAllString(path, "bar")
 	return fmt.Sprintf("<h1>Salutations AMPD from Go,</h1>\n<p>You've requested: %s</p>\n", html.EscapeString(path))
 }
 

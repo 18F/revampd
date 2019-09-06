@@ -51,3 +51,11 @@ func TestJavaScriptInjection(t *testing.T) {
 		t.Fatal("JavaScript injection attack")
 	}
 }
+
+func TestConvertFoo(t *testing.T) {
+	path := "/foo/bar"
+	text := helloHtml(path)
+	if strings.Contains(text, "foo") {
+		t.Fatal("'foo' in path")
+	}
+}
