@@ -1,0 +1,11 @@
+applications:
+- name: hello-ampd
+  memory: 64M
+  path: ../../src
+  command: ./bin/hello-ampd
+  stack: cflinuxfs3
+  buildpacks:
+  - go_buildpack
+  env:
+    GOVERSION: go1.12
+    GOPACKAGENAME: github.com/18F/hello-ampd

@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  test:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Run Go tests
+          command: docker-compose run --rm api make
+
+  cloudgov:
+    machine: true
+    steps:
+      - checkout
+      - deploy:
+          command: ./bin/deploy-cloudgov
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - test
+      - cloudgov:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - develop
