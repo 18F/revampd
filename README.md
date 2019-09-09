@@ -1,6 +1,6 @@
 # hello-ampd
 
-[![Build Status][badge_ci]][5] [![Known Vulnerabilities][badge_snyk]][6]
+[![Build Status][badge_ci]][5] [![Code Climate][badge_cc]][7] [![Go Report Card][badge_rc]][9] [![Codecov][badge_cov]][8] [![Known Vulnerabilities][badge_snyk]][6]
 
 Basic tutorial for the EPA Clean Air Markets Division to go through the process of creating a small web app, in the problem space of AMPD, with automated tests and deployment to cloud.gov.
 
@@ -70,9 +70,15 @@ Be sure to commit the `dep`-generated updates to `src/Gopkg.toml` and `src/Gopkg
 
 [badge_ci]: https://circleci.com/gh/18F/hello-ampd.svg?style=shield
 [badge_snyk]: https://user-images.githubusercontent.com/37100189/64040853-cb2bb580-cb12-11e9-9312-bbc63f2c3d2c.png
+[badge_cc]: https://codeclimate.com/github/18F/hello-ampd/badges/gpa.svg
+[badge_cov]: https://codecov.io/gh/18F/hello-ampd/branch/develop/graph/badge.svg
+[badge_rc]: https://goreportcard.com/badge/github.com/18F/hello-ampd
 [1]: https://git-scm.com/
 [2]: https://docker.com
 [3]: https://docs.docker.com/compose
 [4]: https://golang.github.io/dep/
 [5]: https://circleci.com/gh/18F/hello-ampd
 [6]: https://app.snyk.io/org/hello-ampd/projects
+[7]: https://codeclimate.com/github/18F/hello-ampd
+[8]: https://codecov.io/gh/18F/hello-ampd
+[9]: https://goreportcard.com/report/github.com/18F/hello-ampd
