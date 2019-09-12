@@ -39,7 +39,7 @@ func TestHtml(t *testing.T) {
 func TestGreeting(t *testing.T) {
 	path := "/"
 	text := helloHtml(path)
-	if strings.Contains(text, "Hello") {
+	if strings.Contains(text, "Salutations") {
 		t.Fatal("Wrong greeting in text")
 	}
 }
