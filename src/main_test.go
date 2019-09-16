@@ -54,7 +54,7 @@ func TestJavaScriptInjection(t *testing.T) {
 
 func TestConvertFoo(t *testing.T) {
 	path := "/foo/bar"
-	text := helloHtml(path)
+	text := convertFoo(path)
 	if strings.Contains(text, "foo") {
 		t.Fatal("'foo' in path")
 	}
