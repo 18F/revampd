@@ -1,10 +1,13 @@
-# This docker service serves purposes:
+# These docker services serve several purposes:
 # - a self-contained Go build environment
-# - a local execution environment including a web server
+# - a local execution environment, simulating our
+#   Cloud Foundry (cloud.gov) deployment.
 
 version: '2'
 
 services:
+  # Endpoint for the public API, which is also used by the frontend.
+  # Local stand-in for the go buildpack in Cloud Foundry (see: etc/manifests/api.yml).
   api:
     build:
       # path to the Dockerfile -- contains the commands/description of
@@ -23,33 +26,17 @@ services:
       # doesn't mask/overlay the true vendor tree which is populated in
       # the Dockerfile
       - /go/src/github.com/18F/hello-ampd/src/vendor
-    # don't map host port to container port--API is only available inside containter
-    #ports:
+    ports:
       # map port 8080 on the host OS to the port defined in .env
-      #- "8080:${PORT}"
-    networks:
-      - revampd
+      - "8080:${PORT}"
   
-  # Within the docker world this is the main entrypoint in to
-  # this web application. 
-  #
-  # The web server will do the following:
-  #  - serve static assets
-  #  - proxy /api requests to the backend API
+  # Endpoint for the frontend, serving static assets.
+  # Local stand-in for the staticfile buildpack in Cloud Foundry (see: etc/manifests/frontend.yml).
   web:
-    image: nginx:alpine
-    env_file:
-      - .env
-    command: /usr/src/nginx.sh
+    # Use stock NGINX container from Docker Hub
+    image: nginx
     volumes:
-      - ./bin/nginx.sh:/usr/src/nginx.sh
-      - ./etc/nginx/nginx.template.conf:/tmp/nginx.template.conf
       - ./html:/usr/share/nginx/html
     ports:
-      - "8080:8080"
-    networks:
-      - revampd
-
-networks:
-  revampd:
-    driver: bridge
+      # Stock container listens on port 80 
+      - "9080:80"
