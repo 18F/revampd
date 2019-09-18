@@ -15,5 +15,5 @@
 # vendor/
 
 # Build artifacts
-/bin/hello-ampd
+/bin/revampd
 /src/coverage.txt

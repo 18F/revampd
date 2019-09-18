@@ -1,11 +1,11 @@
 applications:
-- name: hello-ampd-api
+- name: revampd-api
   memory: 64M
   path: ../../src
-  command: ./bin/hello-ampd
+  command: ./bin/revampd
   stack: cflinuxfs3
   buildpacks:
   - go_buildpack
   env:
     GOVERSION: go1.12
-    GOPACKAGENAME: github.com/18F/hello-ampd
+    GOPACKAGENAME: github.com/18F/revampd
