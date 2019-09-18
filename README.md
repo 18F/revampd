@@ -78,7 +78,8 @@ Be sure to commit the `dep`-generated updates to `src/Gopkg.toml` and `src/Gopkg
 [3]: https://docs.docker.com/compose
 [4]: https://golang.github.io/dep/
 [5]: https://circleci.com/gh/18F/revampd
-[6]: https://app.snyk.io/org/revampd/projects
+<!--- Can't easily change URL from hello-ampd to revampd without re-creating and re-inviting everyone --->
+[6]: https://app.snyk.io/org/hello-ampd/projects
 [7]: https://codeclimate.com/github/18F/revampd
 [8]: https://codecov.io/gh/18F/revampd
 [9]: https://goreportcard.com/report/github.com/18F/revampd
