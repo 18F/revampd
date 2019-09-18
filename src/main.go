@@ -17,7 +17,7 @@ func init() {
 
 func helloHtml(path string) string {
 	no_foo := convertFoo(path)
-	return fmt.Sprintf("<h1>Welcome to RevAMPD</h1>\n<p>You've requested: %s</p>\n", html.EscapeString(no_foo))
+	return fmt.Sprintf("<h1>Welcome to revAMPD</h1>\n<p>You've requested: %s</p>\n", html.EscapeString(no_foo))
 }
 
 func convertFoo(path string) string {
@@ -31,6 +31,6 @@ func main() {
 		fmt.Fprintf(w, helloHtml(r.URL.Path))
 	})
 
-	log.Debug("Starting hello-ampd, listening on port " + os.Getenv("PORT"))
+	log.Debug("Starting revAMPD API backend, listening on port " + os.Getenv("PORT"))
 	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }
