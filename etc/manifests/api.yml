@@ -1,5 +1,5 @@
 applications:
-- name: hello-ampd
+- name: hello-ampd-api
   memory: 64M
   path: ../../src
   command: ./bin/hello-ampd
