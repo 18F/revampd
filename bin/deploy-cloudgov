@@ -5,8 +5,10 @@ set -e
 CF_LOGIN="https://api.fr.cloud.gov"
 CF_ORG="epa-prototyping"
 CF_SPACE="dev-ampd"
-APP_NAME="hello-ampd"
-MANIFEST="etc/manifests/api.yml"
+API_NAME="hello-ampd-api"
+API_MANIFEST="etc/manifests/api.yml"
+FRONTEND_NAME="hello-ampd"
+FRONTEND_MANIFEST="etc/manifests/frontend.yml"
 
 # This directory is used to persist the Cloud Foundry credentials
 mkdir -p $HOME/.cf
@@ -35,4 +37,5 @@ cf_run() {
 # https://cloud.gov/docs/services/cloud-gov-service-account/
 cf_run login -a $CF_LOGIN -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s $CF_SPACE
 
-cf_run push $APP_NAME -f $MANIFEST
+cf_run push $API_NAME -f $API_MANIFEST
+cf_run push $FRONTEND_NAME -f $FRONTEND_MANIFEST

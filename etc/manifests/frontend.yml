@@ -1,0 +1,10 @@
+applications:
+- name: hello-ampd
+  path: ../../html
+  memory: 64M
+  domain: app.cloud.gov
+  host: hello-ampd
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  env:
+    FORCE_HTTPS: true
+    API_BASE_URL: https://hello-ampd-api.app.cloud.gov

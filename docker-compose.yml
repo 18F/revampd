@@ -1,6 +1,6 @@
-# This docker service serves 2 purposes:
+# This docker service serves purposes:
 # - a self-contained Go build environment
-# - a local execution environment
+# - a local execution environment including a web server
 
 version: '2'
 
@@ -23,6 +23,33 @@ services:
       # doesn't mask/overlay the true vendor tree which is populated in
       # the Dockerfile
       - /go/src/github.com/18F/hello-ampd/src/vendor
-    ports:
+    # don't map host port to container port--API is only available inside containter
+    #ports:
       # map port 8080 on the host OS to the port defined in .env
-      - "8080:${PORT}"
+      #- "8080:${PORT}"
+    networks:
+      - revampd
+  
+  # Within the docker world this is the main entrypoint in to
+  # this web application. 
+  #
+  # The web server will do the following:
+  #  - serve static assets
+  #  - proxy /api requests to the backend API
+  web:
+    image: nginx:alpine
+    env_file:
+      - .env
+    command: /usr/src/nginx.sh
+    volumes:
+      - ./bin/nginx.sh:/usr/src/nginx.sh
+      - ./etc/nginx/nginx.template.conf:/tmp/nginx.template.conf
+      - ./html:/usr/share/nginx/html
+    ports:
+      - "8080:8080"
+    networks:
+      - revampd
+
+networks:
+  revampd:
+    driver: bridge
