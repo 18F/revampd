@@ -3,8 +3,4 @@ applications:
   path: ../../html
   memory: 64M
   domain: app.cloud.gov
-  host: revampd
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
-  env:
-    FORCE_HTTPS: true
-    API_BASE_URL: https://revampd-api.app.cloud.gov
