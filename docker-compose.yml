@@ -29,6 +29,8 @@ services:
     ports:
       # map port 8080 on the host OS to the port defined in .env
       - "8080:${PORT}"
+    depends_on:
+      - db
   
   # Endpoint for the frontend, serving static assets.
   # Local stand-in for the staticfile buildpack in Cloud Foundry (see: etc/manifests/frontend.yml).
@@ -40,3 +42,11 @@ services:
     ports:
       # Stock container listens on port 80 
       - "9080:80"
+
+  # Endpoint for the PostgreSQL relational database used by the API backend.
+  # Local stand-in for the Cloud Foundry service instance named `revampd-psql`
+  # (see: bin/setup-cloudgov).
+  db:
+    image: postgres:9.4
+    ports:
+      - "5432:5432"

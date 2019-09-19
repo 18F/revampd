@@ -6,6 +6,9 @@ applications:
   stack: cflinuxfs3
   buildpacks:
   - go_buildpack
+  services:
+  # defined in bin/setup-cloudgov
+  - revampd-psql
   env:
     GOVERSION: go1.12
     GOPACKAGENAME: github.com/18F/revampd
