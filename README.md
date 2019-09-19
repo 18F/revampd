@@ -45,7 +45,7 @@ docker-compose up --abort-on-container-exit --build
 
 Log messages will be printed to the console's `stdout`.
 
-Once the `revampd_web_1` and `revampd_api_1` instances have started up, a web browser can be directed to `http://localhost:9080` to access the frontend. The API backend can be access directly at `http://localhost:8080`.
+Once the `revampd_web_1`, `revampd_db_1`, and `revampd_api_1` instances have started up, a web browser can be directed to `http://localhost:9080` to access the frontend. The API backend can be access directly at `http://localhost:8080`.
 
 ### Stopping and cleaning up the local server
 
