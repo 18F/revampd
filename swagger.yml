@@ -1,0 +1,30 @@
+swagger: "2.0"
+info:
+  title: revAMPD API
+  description: The *revAMPD* API is a demonstration project to make EPA's Clean Air Markets Division data available through a web API
+  version: 1.0.0
+host: revampd-api.app.cloud.gov
+basePath: /v1
+schemes:
+  - https
+paths:
+  /emissions/{year}:
+    get:
+      summary: Returns annual emissions.
+      description: Returns annual emissions by unit and operating year (2009 to present).
+      parameters:
+        - in: path
+          name: year
+          required: false
+          type: integer
+          minimum: 2009
+          description: The operating year. 
+      produces:
+        - text/csv
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        404:
+          description: The specified year was not found.
