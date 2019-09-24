@@ -1,0 +1,128 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: revAMPD API
+servers:
+  - url: 'https://revampd-api.app.cloud.gov'    
+paths:
+  /emissions:
+    get:
+      summary: Returns annual emissions.
+      description: Returns annual emissions by unit and operating year (2009 to present).
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: An array annual emissions by unit and operating year
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/AnnualEmissions"
+  /emissions/{year}:
+    get:
+      summary: Info for a specific pet
+      operationId: showPetById
+      tags:
+        - pets
+      parameters:
+        - name: year
+          in: path
+          required: true
+          description: The operating year for the emissions
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnnualEmissions"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    AnnualEmission:
+      type: object
+      required:
+        - unitId
+        - orisPlCode
+        - operatingYear
+      properties:
+        unitId:
+          type: string
+        orisPlCode:
+          type: string
+        operatingYear:
+          type: integer
+          format: int32
+        facilityName:
+          type: string
+        state:
+          type: string
+        unitType:
+          type: string
+        primaryFuel:
+          type: string
+        operatingTime:
+          type: number
+          format: double
+        grossLoad:
+          type: number
+          format: double
+        steamLoad:
+          type: number
+          format: double
+        totalLoad:
+          type: number
+          format: double
+        heatInput:
+          type: number
+          format: double
+        so2Mass:
+          type: number
+          format: double
+        so2Rate:
+          type: number
+          format: double
+        noxMass:
+          type: number
+          format: double
+        noxRate:
+          type: number
+          format: double
+        co2Mass:
+          type: number
+          format: double
+        co2Rate:
+          type: number
+          format: double
+    AnnualEmissions:
+      type: array
+      items:
+        $ref: "#/components/schemas/AnnualEmission"
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
